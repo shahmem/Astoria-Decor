@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Astoria Decor – Hospitality & Furnishing Solutions</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --navy: #101137;
+      --gold: #c9a227;
+      --gold-light: #e8c14a;
+      --white: #ffffff;
+      --muted: #a8b4cc;
+      --dark: #0b1135;
+      --card: #0e1440;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--navy);
+      color: var(--white);
+    }
+
+    iconify-icon { display: inline-flex; vertical-align: middle; }
+
+    /* ─── NAVBAR ─── */
+    nav {
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 100;
+      height: 60px;
+      background: #101137;
+      border-bottom: 1px solid rgba(201,162,39,0.18);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 16px;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .nav-logo img {
+      height: 40px;
+      width: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 0 6px rgba(201,162,39,0.3));
+    }
+
+    .nav-brand { display: flex; flex-direction: column; line-height: 1.15; }
+    .nav-brand .name {
+      font-size: 0.95rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      color: var(--white);
+      text-transform: uppercase;
+    }
+    .nav-brand .sub {
+      font-size: 0.52rem;
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      color: var(--gold);
+      text-transform: uppercase;
+    }
+
+    /* desktop links — hidden on mobile */
+    .nav-links {
+      display: none;
+      list-style: none;
+      align-items: center;
+      gap: 28px;
+    }
+    .nav-links a {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+      position: relative;
+      padding-bottom: 3px;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 0; height: 1px;
+      background: var(--gold);
+      transition: width 0.25s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-links a:hover::after { width: 100%; }
+
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--gold);
+      color: var(--navy) !important;
+      padding: 7px 16px;
+      border-radius: 3px;
+      font-weight: 700 !important;
+    }
+    .nav-cta:hover { background: var(--gold-light); }
+    .nav-cta::after { display: none !important; }
+
+    .hamburger {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+    .hamburger span {
+      display: block;
+      width: 22px; height: 2px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+
+    /* mobile drawer */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 60px; left: 0; right: 0;
+      background: #101137;
+      border-bottom: 1px solid rgba(201,162,39,0.18);
+      padding: 16px 20px;
+      z-index: 99;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      padding: 11px 4px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      transition: color 0.2s;
+    }
+    .mobile-menu a:last-child { border-bottom: none; }
+    .mobile-menu a:hover { color: var(--gold); }
+    .mobile-menu .m-cta { color: var(--gold); font-weight: 700; }
+
+    @media (min-width: 768px) {
+      nav { height: 68px; padding: 0 32px; }
+      .nav-logo img { height: 46px; }
+      .nav-brand .name { font-size: 1.05rem; }
+      .nav-links { display: flex; }
+      .hamburger { display: none; }
+    }
+
+    /* ─── HERO ─── */
+    #home {
+      min-height: 100svh;
+      padding: 80px 20px 60px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: #ffffff;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #home::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 70% 30%, rgba(201,162,39,0.09) 0%, transparent 55%),
+        radial-gradient(ellipse at 15% 80%, rgba(16,17,55,0.05) 0%, transparent 45%);
+      pointer-events: none;
+    }
+
+    .hero-brand {
+      font-size: clamp(2.8rem, 14vw, 5.5rem);
+      font-weight: 800;
+      letter-spacing: 0.28em;
+      color: var(--navy);
+      text-transform: uppercase;
+      line-height: 1;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-divider {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin: 10px 0 6px;
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 320px;
+    }
+    .hero-divider .line { flex: 1; height: 1px; background: var(--gold); }
+    .hero-divider .sub {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.34em;
+      color: var(--gold);
+      text-transform: uppercase;
+    }
+
+    .hero-tagline {
+      font-size: 0.7rem;
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      color: #666;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .pills {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 32px;
+      position: relative;
+      z-index: 1;
+    }
+    .pill {
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid var(--gold);
+      padding: 5px 14px;
+      border-radius: 100px;
+    }
+
+    .hero-btns {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      width: 100%;
+      max-width: 280px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 14px 24px;
+      border-radius: 3px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: all 0.22s;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+    }
+    .btn-gold { background: var(--gold); color: var(--navy); }
+    .btn-gold:hover { background: var(--gold-light); }
+    .btn-outline-dark {
+      background: transparent;
+      border: 1.5px solid var(--navy);
+      color: var(--navy);
+    }
+    .btn-outline-dark:hover { background: rgba(16,17,55,0.06); }
+    .btn-outline-gold {
+      background: transparent;
+      border: 1.5px solid var(--gold);
+      color: var(--gold);
+    }
+    .btn-outline-gold:hover { background: rgba(201,162,39,0.1); }
+
+    .scroll-cue {
+      margin-top: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      color: #999;
+      font-size: 0.62rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      animation: bob 2s ease-in-out infinite;
+      position: relative;
+      z-index: 1;
+    }
+    @keyframes bob {
+      0%, 100% { transform: translateY(0); opacity: 0.55; }
+      50%       { transform: translateY(7px); opacity: 1; }
+    }
+
+    @media (min-width: 480px) {
+      .hero-btns { flex-direction: row; max-width: none; width: auto; }
+      .btn { width: auto; }
+    }
+
+    /* ─── SECTION COMMON ─── */
+    .section { padding: 64px 20px; }
+    @media (min-width: 768px) { .section { padding: 96px 32px; } }
+
+    .wrap { max-width: 960px; margin: 0 auto; }
+
+    .sec-eyebrow {
+      text-align: center;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+    .sec-title {
+      text-align: center;
+      font-size: clamp(1.5rem, 5vw, 2.2rem);
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: var(--white);
+    }
+    .gold-bar {
+      width: 44px; height: 2px;
+      background: var(--gold);
+      margin: 12px auto 40px;
+    }
+
+    /* ─── SERVICES ─── */
+    #services { background: var(--dark); }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    @media (min-width: 600px) {
+      .services-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (min-width: 900px) {
+      .services-grid { grid-template-columns: repeat(5, 1fr); }
+    }
+
+    .svc-card {
+      background: var(--card);
+      border: 1px solid rgba(201,162,39,0.15);
+      border-radius: 8px;
+      padding: 28px 16px 24px;
+      text-align: center;
+      transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+    }
+    .svc-card:hover {
+      border-color: var(--gold);
+      transform: translateY(-4px);
+      box-shadow: 0 10px 32px rgba(201,162,39,0.1);
+    }
+    .svc-icon {
+      color: var(--gold);
+      margin-bottom: 14px;
+      display: flex;
+      justify-content: center;
+    }
+    .svc-card h3 {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gold);
+      line-height: 1.55;
+    }
+
+    /* ─── CONTACT ─── */
+    #contact { background: var(--navy); }
+
+    .contact-grid {
+      display: grid;
+      gap: 20px;
+    }
+    @media (min-width: 640px) {
+      .contact-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    .contact-card {
+      background: var(--card);
+      border: 1px solid rgba(201,162,39,0.14);
+      border-radius: 8px;
+      padding: 28px 24px;
+    }
+    .contact-card h3 {
+      font-size: 0.63rem;
+      font-weight: 700;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 22px;
+    }
+
+    .c-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .c-icon {
+      color: var(--gold);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .c-row p {
+      font-size: 0.88rem;
+      font-weight: 400;
+      line-height: 1.65;
+      color: var(--muted);
+    }
+    .c-row a {
+      font-size: 0.92rem;
+      font-weight: 500;
+      color: var(--white);
+      text-decoration: none;
+      display: block;
+      line-height: 1.7;
+      transition: color 0.2s;
+    }
+    .c-row a:hover { color: var(--gold); }
+    .c-name {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: 0.04em;
+    }
+
+    .card-btns {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 24px;
+    }
+    @media (min-width: 380px) {
+      .card-btns { flex-direction: row; flex-wrap: wrap; }
+      .card-btns .btn { width: auto; flex: 1; }
+    }
+
+    .map-wrap {
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid rgba(201,162,39,0.18);
+      margin-top: 16px;
+    }
+    .map-wrap iframe {
+      width: 100%; height: 220px;
+      display: block; border: none;
+    }
+    @media (min-width: 640px) {
+      .map-wrap iframe { height: 200px; }
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: #08112a;
+      padding: 36px 20px;
+      text-align: center;
+      border-top: 1px solid rgba(201,162,39,0.14);
+    }
+    footer img {
+      height: 48px;
+      margin-bottom: 12px;
+      filter: drop-shadow(0 0 8px rgba(201,162,39,0.28));
+    }
+    .f-brand {
+      font-size: 0.85rem;
+      font-weight: 800;
+      letter-spacing: 0.22em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    footer p {
+      font-size: 0.7rem;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      line-height: 1.9;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAVBAR ── -->
+<nav>
+  <a href="#home" class="nav-logo">
+    <img src="logo.png" alt="Astoria Decor" />
+    <div class="nav-brand">
+      <span class="name">Astoria Decor</span>
+      <span class="sub">Hospitality & Furnishing</span>
+    </div>
+  </a>
+
+  <ul class="nav-links">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li>
+      <a href="tel:8147965656" class="nav-cta">
+        <iconify-icon icon="solar:phone-bold" width="14"></iconify-icon> Call Now
+      </a>
+    </li>
+  </ul>
+
+  <button class="hamburger" onclick="toggleMenu()" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- mobile drawer -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#home" onclick="closeMenu()">
+    <iconify-icon icon="solar:home-bold" width="16"></iconify-icon> Home
+  </a>
+  <a href="#services" onclick="closeMenu()">
+    <iconify-icon icon="solar:sofa-bold" width="16"></iconify-icon> Services
+  </a>
+  <a href="#contact" onclick="closeMenu()">
+    <iconify-icon icon="solar:map-point-bold" width="16"></iconify-icon> Contact
+  </a>
+  <a href="tel:8147965656" class="m-cta" onclick="closeMenu()">
+    <iconify-icon icon="solar:phone-bold" width="16"></iconify-icon> 8147965656
+  </a>
+</div>
+
+<!-- ── HERO ── -->
+<section id="home">
+  <h1 class="hero-brand">Astoria</h1>
+  <div class="hero-divider">
+    <span class="line"></span>
+    <span class="sub">Decor</span>
+    <span class="line"></span>
+  </div>
+  <p class="hero-tagline">Hospitality &amp; Furnishing Solutions</p>
+
+  <div class="pills">
+    <span class="pill">Premium Materials</span>
+    <span class="pill">Custom Solutions</span>
+    <span class="pill">Expert Craftsmanship</span>
+  </div>
+
+  <div class="hero-btns">
+    <a href="tel:8147965656" class="btn btn-gold">
+      <iconify-icon icon="solar:phone-bold" width="15"></iconify-icon> Call Us
+    </a>
+    <a href="https://www.instagram.com/astoriadecor.in?utm_source=qr&igsi=M3d0a2R5ZXpqMTVj"
+       target="_blank" rel="noopener" class="btn btn-outline-dark">
+      <iconify-icon icon="skill-icons:instagram" width="15"></iconify-icon> Instagram
+    </a>
+  </div>
+
+  <div class="scroll-cue">
+    Scroll to explore
+    <iconify-icon icon="solar:alt-arrow-down-bold" width="16" style="color:#aaa;"></iconify-icon>
+  </div>
+</section>
+
+<!-- ── SERVICES ── -->
+<section id="services" class="section">
+  <div class="wrap">
+    <p class="sec-eyebrow">What We Offer</p>
+    <h2 class="sec-title">Products &amp; Services</h2>
+    <div class="gold-bar"></div>
+
+    <div class="services-grid">
+      <div class="svc-card">
+        <div class="svc-icon"><iconify-icon icon="game-icons:sofa" width="40"></iconify-icon></div>
+        <h3>Sofa &amp; Curtain Fabrics</h3>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon"><iconify-icon icon="mdi:leather" width="40"></iconify-icon></div>
+        <h3>Genuine Leather &amp; Leatherette</h3>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon"><iconify-icon icon="mdi:tools" width="40"></iconify-icon></div>
+        <h3>Upholstery &amp; Sofa Manufacturing</h3>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon"><iconify-icon icon="solar:home-smile-bold" width="40"></iconify-icon></div>
+        <h3>Interior &amp; Furnishing Solutions</h3>
+      </div>
+      <div class="svc-card">
+        <div class="svc-icon"><iconify-icon icon="solar:buildings-bold" width="40"></iconify-icon></div>
+        <h3>Hospitality Solutions</h3>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACT ── -->
+<section id="contact" class="section">
+  <div class="wrap">
+    <p class="sec-eyebrow">Get In Touch</p>
+    <h2 class="sec-title">Contact Us</h2>
+    <div class="gold-bar"></div>
+
+    <div class="contact-grid">
+
+      <!-- details -->
+      <div class="contact-card">
+        <h3>Contact Details</h3>
+
+        <div class="c-row">
+          <iconify-icon icon="solar:user-bold" class="c-icon" width="20"></iconify-icon>
+          <p class="c-name">Fawaz</p>
+        </div>
+        <div class="c-row">
+          <iconify-icon icon="solar:phone-bold" class="c-icon" width="20"></iconify-icon>
+          <div>
+            <a href="tel:8147965656">8147965656</a>
+            <a href="tel:9656565765">9656565765</a>
+          </div>
+        </div>
+        <div class="c-row">
+          <iconify-icon icon="solar:map-point-bold" class="c-icon" width="20"></iconify-icon>
+          <p>95/10, Muninianjappa Garden,<br>Old KEB Office, Kaval Byrasandra,<br>RT Nagar Post, Bengaluru – 560032</p>
+        </div>
+        <div class="c-row">
+          <iconify-icon icon="skill-icons:instagram" class="c-icon" width="20"></iconify-icon>
+          <a href="https://www.instagram.com/astoriadecor.in?utm_source=qr&igsi=M3d0a2R5ZXpqMTVj"
+             target="_blank" rel="noopener">@astoriadecor.in</a>
+        </div>
+
+        <div class="card-btns">
+          <a href="tel:8147965656" class="btn btn-gold" style="font-size:0.72rem; padding:11px 18px;">
+            <iconify-icon icon="solar:phone-bold" width="14"></iconify-icon> Call Now
+          </a>
+          <a href="https://wa.me/918147965656" target="_blank" rel="noopener"
+             class="btn btn-outline-gold" style="font-size:0.72rem; padding:11px 18px;">
+            <iconify-icon icon="logos:whatsapp-icon" width="14"></iconify-icon> WhatsApp
+          </a>
+        </div>
+      </div>
+
+      <!-- map -->
+      <div class="contact-card">
+        <h3>Find Us</h3>
+        <div class="map-wrap">
+          <iframe
+            src="https://maps.google.com/maps?q=95/10+Muninianjappa+Garden+Kaval+Byrasandra+RT+Nagar+Bengaluru+560032&output=embed"
+            allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+        <div style="margin-top:14px;">
+          <a href="https://maps.app.goo.gl/hKmgoQTxcwY7V7gi6?g_st=awb"
+             target="_blank" rel="noopener"
+             class="btn btn-outline-gold" style="font-size:0.72rem; padding:11px 18px; width:100%;">
+            <iconify-icon icon="solar:map-bold" width="14"></iconify-icon> Open in Google Maps
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <img src="logo.png" alt="Astoria Decor" />
+  <p class="f-brand">Astoria Decor</p>
+  <p>Hospitality &amp; Furnishing Solutions &nbsp;|&nbsp; Bengaluru, India</p>
+  <p style="margin-top:4px;">© 2024 Astoria Decor. All rights reserved.</p>
+</footer>
+
+<script>
+  function toggleMenu() {
+    document.getElementById('mobileMenu').classList.toggle('open');
+  }
+  function closeMenu() {
+    document.getElementById('mobileMenu').classList.remove('open');
+  }
+  document.addEventListener('click', function(e) {
+    const menu = document.getElementById('mobileMenu');
+    const btn = document.querySelector('.hamburger');
+    if (!menu.contains(e.target) && !btn.contains(e.target)) {
+      menu.classList.remove('open');
+    }
+  });
+</script>
+
+</body>
+</html>
