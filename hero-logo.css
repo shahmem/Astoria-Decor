@@ -1,0 +1,17 @@
+.hero-brand-logo {
+  display: block;
+  width: min(100%, 360px);
+  height: auto;
+  margin: 0 0 26px;
+}
+
+.hero {
+  height: auto;
+  min-height: min(720px, calc(100svh - 78px));
+}
+
+@media (max-width: 800px) {
+  .hero {
+    min-height: min(680px, calc(100svh - 68px));
+  }
+}

@@ -25,6 +25,43 @@
 .hero h1 { font-size: clamp(44px, 5.3vw, 74px); }
 .hero-accent { color: #e6ca8f; }
 
+.hero-brand-logo {
+  display: block;
+  width: min(100%, 440px);
+  height: auto;
+  margin: 0 0 34px;
+}
+
+.hero-brand-logo + .eyebrow { margin-bottom: 15px; }
+
+.intro {
+  grid-template-columns: minmax(0, 1fr) minmax(360px, .9fr);
+  align-items: center;
+  gap: clamp(48px, 7vw, 110px);
+}
+
+.intro-content { max-width: 620px; }
+
+.intro-copy {
+  max-width: 510px;
+  margin-top: 30px;
+}
+
+.intro-image {
+  margin: 0;
+  min-height: 510px;
+  overflow: hidden;
+  background: #dfd5c6;
+}
+
+.intro-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
 .service-grid { grid-template-columns: repeat(5, 1fr); }
 .service-card { min-height: 325px; }
 
@@ -88,6 +125,9 @@
   .material-showcase { min-height: 540px; }
   .material-showcase-copy { padding: 65px 22px; }
   .craft-content { padding: 75px 22px; }
+  .intro { grid-template-columns: 1fr; gap: 40px; }
+  .intro-image { min-height: 360px; }
+  .hero-brand-logo { width: min(100%, 350px); margin-bottom: 28px; }
 }
 
 @media (max-width: 460px) {
