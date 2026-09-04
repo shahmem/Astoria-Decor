@@ -163,6 +163,7 @@
 
 @media (max-width: 800px) {
   .brand { width: 72px; height: 38px; }
+  nav { background: rgba(0, 0, 0, .82); }
   .contact { grid-template-columns: 1fr; gap: 28px; }
   .map-frame { min-height: 320px; }
   .craft-image { min-height: auto; padding: 0; }
