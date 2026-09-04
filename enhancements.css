@@ -66,7 +66,19 @@
   object-position: center;
 }
 
-.service-grid { grid-template-columns: repeat(5, 1fr); }
+.service-grid {
+  grid-template-columns: repeat(3, 1fr);
+  max-width: 1000px;
+  margin: 0 auto;
+  gap: 18px;
+  border: 0;
+}
+
+.services .section-heading {
+  max-width: 1000px;
+  margin: 0 auto 48px;
+}
+
 .service-card {
   min-height: 390px;
   padding: 22px 20px;
@@ -77,6 +89,7 @@
   isolation: isolate;
   background: #3d3024;
   color: #fff;
+  border: 0;
 }
 
 .service-card.featured { background: #3d3024; color: #fff; }
@@ -127,7 +140,7 @@
 .material-showcase-scrim {
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, rgba(16,17,55,.76), rgba(16,17,55,.18) 65%, rgba(16,17,55,.06));
+  background: linear-gradient(90deg, rgba(0, 0, 0, .76), rgba(0, 0, 0, .18) 65%, rgba(0, 0, 0, .06));
 }
 
 .material-showcase-copy {
@@ -152,7 +165,14 @@
   font-size: 15px;
 }
 
-.craft { display: block; }
+.craft {
+  display: block;
+  background: #e5ded1;
+  color: #101137;
+}
+.craft-list > div { border-color: rgba(16, 17, 55, .18); }
+.craft-list p { color: #38394d; }
+.craft-list strong { color: #101137; }
 .craft-content { max-width: 920px; margin: 0 auto; padding: clamp(75px, 10vw, 140px) clamp(22px, 8vw, 130px); }
 
 /* Slightly more compact section-heading scale */
