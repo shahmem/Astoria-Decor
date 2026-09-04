@@ -7,11 +7,33 @@
 
 .hero {
   height: auto;
-  min-height: min(720px, calc(100svh - 78px));
+  min-height: min(720px, 100svh);
+}
+
+.hero h1 {
+  letter-spacing: 0.015em;
+}
+
+.hero-scrim {
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.78), rgba(0, 0, 0, 0.38) 43%, rgba(0, 0, 0, 0.08) 76%);
+}
+
+.site-header {
+  position: absolute;
+  inset: 0 0 auto;
+  background: transparent;
+}
+
+.hero-content {
+  padding-top: clamp(110px, 15vh, 135px);
 }
 
 @media (max-width: 800px) {
   .hero {
-    min-height: min(680px, calc(100svh - 68px));
+    min-height: min(680px, 100svh);
+  }
+
+  .hero-scrim {
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.35));
   }
 }
